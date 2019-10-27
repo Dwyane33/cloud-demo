@@ -1,0 +1,20 @@
+server:
+  port: 5555
+spring:
+  application:
+    name: router
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+zuul:
+  routes:
+    consumer-service:
+      path: /consumer/**
+      serviceId: consumer-service
+    producer-service:
+      path: /producer/**
+      serviceId: producer-service
+    service-b:
+      path: /b/**
+      url: http://localhost:7002
